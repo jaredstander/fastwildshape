@@ -34,5 +34,9 @@ describe User do
       user = User.new(email: "knightartorias@lordran.com", name: "Knight Artorias")
       expect(user).not_to be_valid
     end
+
+    it "requires passwords to match" do
+      user = User.new(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "NotTheSamePassword!")
+      expect(user).not_to be_valid
   end
 end
