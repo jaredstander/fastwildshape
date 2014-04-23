@@ -23,7 +23,19 @@ feature "user sign up" do
     expect(page).to have_field("PasswordConfirmation")
   end
 
-  scenario "user can fill in form fields with content" do
+  scenario "user can fill in form fields, submit, and be logged in when values are correct" do
     visit new_user_path
-    
+    fill_in "Name", with: user.name
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "PasswordConfirmation", with: user.password_confirmation
+    click_button "Sign Up"
+    response.body.should have_content "Hello #{user.name}!"
+  end
+
+  scenario "user remains on create account page when an error occurs" do
+    visit new_user_path
+    click_button "Sign Up"
+    response.body.should have_content "cannot be blank"
+  end
 end
