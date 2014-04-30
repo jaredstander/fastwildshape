@@ -38,4 +38,5 @@ feature "user sign up" do
     click_button "Sign Up"
     response.body.should have_content "cannot be blank"
   end
+  
 end
