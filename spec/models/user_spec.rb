@@ -29,6 +29,7 @@ describe User do
 
   describe "user activities" do
     before do
+      # explore let
       user = create(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "AGreatPassword!")
     end
 
@@ -36,6 +37,7 @@ describe User do
       user.authenticate(user.email, user.password).should eq(user)
     end
 
+    # investigate not encrypting password
     it "authenticates with a correct email and password regardless of email case" do
       user.authenticate(user.email.uppercase, user.password).should eq(user)
     end
