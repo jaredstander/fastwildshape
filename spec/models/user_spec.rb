@@ -29,17 +29,15 @@ describe User do
 
   describe "user activities" do
     before do
-      # explore let
-      user = create(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "AGreatPassword!")
+      let(user) { create(:user) }
     end
 
     it "authenticates with a correct email and password" do
-      user.authenticate(user.email, user.password).should eq(user)
+      user.authenticate(user.email, "AGreatPassword!").should eq(user)
     end
 
-    # investigate not encrypting password
     it "authenticates with a correct email and password regardless of email case" do
-      user.authenticate(user.email.uppercase, user.password).should eq(user)
+      user.authenticate(user.email.uppercase, "AGreatPassword!").should eq(user)
     end
 
     it "should not authenticate with an incorrect email or password" do
