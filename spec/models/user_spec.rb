@@ -21,16 +21,14 @@ describe User do
     it { should validate_presence_of(:password_confirmation) }
     it "Should ensure passwords match" do
       user = create(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "AGreatPassword!")
-      user.password.should eq(password_confirmation)
+      it { validates_confirmation_of(:password) }
     end
     it { should ensure_length_of(:password).is_at_least(8) }
     it { should_not allow_mass_assignment_of(:password) }
   end
 
   describe "user activities" do
-    before do
-      let(user) { create(:user) }
-    end
+    let(user) { create(:user) }
 
     it "authenticates with a correct email and password" do
       user.authenticate(user.email, "AGreatPassword!").should eq(user)
