@@ -9,8 +9,7 @@ describe User do
   describe "when creating a new user" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
-    # email only validates presence, and inclusion of @ symbol
-    # will email user with confirmation link, which will be final validation
+    it { should should_validate_uniqueness_of :email }
     it { should allow_value("e@e").for(:email) }
     it { should_not allow_value("emailatexample.com").for(:email) }
     it "stores all emails as downcase with white space truncated" do
@@ -18,7 +17,6 @@ describe User do
       user.email.should == "john.doe@example.com"
     end
     it { should validate_presence_of(:password) }
-    it { should validate_presence_of(:password_confirmation) }
     it "Should ensure passwords match" do
       user = create(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "AGreatPassword!")
       it { validates_confirmation_of(:password) }
