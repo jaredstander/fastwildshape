@@ -49,7 +49,6 @@ require "spec_helper"
 
 describe "Get Available Forms" do
   let(character) { create(:character) }
-  
 
   # Tests. Based on a full character class, generate available forms and sizes.
   # Have records for combinations as above?

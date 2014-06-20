@@ -22,10 +22,10 @@ describe Character do
   describe "when creating a new character" do
     # let(:character) { create(:character) }
     # expect(:character).to be_valid
-    character = Character.new(name: "Bob", race: "elf")
+    character = Character.new(name: "Bob", race: "elf", level: 4, size: "medium")
     it { expect(character).to be_valid }
     it { should validate_presence_of(:name) }
-    # it { should validate_presence_of(:character_size) }
+    it { should validate_presence_of(:size) }
     it { should validate_presence_of(:level) }
     it { should validate_presence_of(:race) }
   #   it { should validate_presence_of(:strength) }
