@@ -5,6 +5,8 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :race
       t.string :size
       t.integer :level
+      t.integer :strength
+      t.integer :dexterity
 
       t.timestamps
     end

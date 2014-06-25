@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20140524221332) do
     t.string   "race"
     t.string   "size"
     t.integer  "level"
+    t.integer  "strength"
+    t.integer  "dexterity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
