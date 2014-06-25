@@ -22,18 +22,27 @@ describe Character do
   describe "when creating a new character" do
     # let(:character) { create(:character) }
     # expect(:character).to be_valid
-    character = Character.new(name: "Bob", race: "elf", level: 4, size: "medium", strength: 10, dexterity: 10)
+    character = Character.new(name: "Bob",
+                              race: "elf",
+                              level: 4,
+                              size: "medium",
+                              str: 10,
+                              dex: 10,
+                              con: 10,
+                              bab: 12,
+                              total_ac: 13,
+                              touch_ac: 10)
     it { expect(character).to be_valid }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:size) }
     it { should validate_presence_of(:level) }
     it { should validate_presence_of(:race) }
-    it { should validate_presence_of(:strength) }
-    it { should validate_presence_of(:dexterity) }
-    it { should validate_presence_of(:constitution) }
-  #   it { should validate_presence_of(:base_attack_bonus) }
-  #   it { should validate_presence_of(:total_ac) }
-  #   it { should validate_presence_of(:touch_ac) }
+    it { should validate_presence_of(:str) }
+    it { should validate_presence_of(:dex) }
+    it { should validate_presence_of(:con) }
+    it { should validate_presence_of(:bab) }
+    it { should validate_presence_of(:total_ac) }
+    it { should validate_presence_of(:touch_ac) }
   #   it { should validate_presence_of(:flatfooted_ac) }
   #   it { should validate_presence_of(:stackable_ac) }
   #   it { should validate_presence_of(:druid?) }
