@@ -22,18 +22,9 @@ describe Character do
   describe "when creating a new character" do
     # let(:character) { create(:character) }
     # expect(:character).to be_valid
-    character = Character.new(name: "Bob",
-                              level: 4,
-                              size: "medium",
-                              str: 10,
-                              dex: 10,
-                              con: 10,
-                              bab: 12,
-                              total_ac: 13,
-                              touch_ac: 10
-                              flatfooted_ac: 13,
-                              stackable_armor_ac: 0,
-                              druid?: true)
+    character = Character.new(name: "Bob", level: 4, size: "medium", str: 10, dex: 10, con: 10, bab: 12,
+                              total_ac: 13, touch_ac: 10, flatfooted_ac: 13, stackable_armor_ac: 0,
+                              is_druid: true, milestone_levels: "4,6,8,10,12")
     it { expect(character).to be_valid }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:size) }
@@ -46,15 +37,14 @@ describe Character do
     it { should validate_presence_of(:touch_ac) }
     it { should validate_presence_of(:flatfooted_ac) }
     it { should validate_presence_of(:stackable_armor_ac) }
-    it { should validate_presence_of(:druid?) }
-    it { should allow_mass_asignment_of(:character_name) }
-    it { should allow_mass_asignment_of(:druid?) }
-  #   it { should allow_mass_asignment_of(:druid_archtype) }
-    it { should allow_mass_asignment_of(:level) }
-    it "stores druid? as a boolean value" do
-      it { should allow_value(true).for(:druid?) }
-      it { should allow_value(false).for(:druid?) }
-    end
+    it { should validate_presence_of(:is_druid) }
+    it { should validate_presence_of(:milestone_levels) }
+    # it { should allow_mass_asignment_of(:name) }
+    # it { should allow_mass_asignment_of(:druid?) }
+    # it { should allow_mass_asignment_of(:druid_archtype) }
+    # it { should allow_mass_asignment_of(:level) }
+    it { should allow_value(false).for(:is_druid) }
+    it { should allow_value(true).for(:is_druid) }
     it { should validate_numericality_of(:level).is_greater_than(0).is_less_than(21) }
   end
 

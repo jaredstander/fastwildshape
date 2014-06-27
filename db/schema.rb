@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140524221332) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
-    t.string   "race"
     t.string   "size"
     t.integer  "level"
     t.integer  "str"
@@ -24,6 +23,10 @@ ActiveRecord::Schema.define(version: 20140524221332) do
     t.integer  "bab"
     t.integer  "total_ac"
     t.integer  "touch_ac"
+    t.integer  "flatfooted_ac"
+    t.integer  "stackable_armor_ac"
+    t.boolean  "is_druid"
+    t.string   "milestone_levels"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

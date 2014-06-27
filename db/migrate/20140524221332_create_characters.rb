@@ -12,7 +12,8 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :touch_ac
       t.integer :flatfooted_ac
       t.integer :stackable_armor_ac
-      t.boolean :druid?
+      t.boolean :is_druid
+      t.string :milestone_levels
 
       t.timestamps
     end
