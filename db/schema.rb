@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140524221332) do
     t.integer  "touch_ac"
     t.integer  "flatfooted_ac"
     t.integer  "stackable_armor_ac"
-    t.boolean  "is_druid"
+    t.integer  "is_druid"
     t.string   "milestone_levels"
     t.datetime "created_at"
     t.datetime "updated_at"
