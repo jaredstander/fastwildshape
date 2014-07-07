@@ -2,10 +2,6 @@ require "spec_helper"
 
 describe User do
 
-  # it { should have_db_index(:name) }
-  # it { should have_db_index(:email) }
-  # it { should have_db_index(:password) }
-
   # describe "when creating a new user" do
   #   it { should validate_presence_of(:name) }
   #   it { should validate_presence_of(:email) }
@@ -17,10 +13,6 @@ describe User do
   #     user.email.should == "john.doe@example.com"
   #   end
   #   it { should validate_presence_of(:password) }
-  #   it "Should ensure passwords match" do
-  #     user = create(name: "Knight Artorias", email: "knightartorias@lordran.com", password: "AGreatPassword!", password_confirmation: "AGreatPassword!")
-  #     it { validates_confirmation_of(:password) }
-  #   end
   #   it { should ensure_length_of(:password).is_at_least(8) }
   #   it { should_not allow_mass_assignment_of(:password) }
   # end
