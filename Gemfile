@@ -27,7 +27,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'protected_attributes'
+gem 'clearance'
+gem 'whiny_validation'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -52,8 +53,9 @@ group :test, :development do
   gem 'turn', '< 0.8.3'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
-  gem 'database_cleaner'
+  gem 'database_cleaner', git: 'git@github.com:bmabey/database_cleaner.git'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do

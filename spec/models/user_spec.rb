@@ -2,35 +2,54 @@ require "spec_helper"
 
 describe User do
 
-  # describe "when creating a new user" do
-  #   it { should validate_presence_of(:name) }
-  #   it { should validate_presence_of(:email) }
-  #   it { should should_validate_uniqueness_of :email }
-  #   it { should allow_value("e@e").for(:email) }
-  #   it { should_not allow_value("emailatexample.com").for(:email) }
-  #   it "stores all emails as downcase with white space truncated" do
-  #     user = create(:user, email: " Jo hn.Do e @exa mp le.c om ")
-  #     user.email.should == "john.doe@example.com"
-  #   end
-  #   it { should validate_presence_of(:password) }
-  #   it { should ensure_length_of(:password).is_at_least(8) }
-  #   it { should_not allow_mass_assignment_of(:password) }
-  # end
+  describe "attribute name" do
+    user = FactoryGirl.create(:user)
+    it { should validate_presence_of(:name) }
+  end
 
-  # describe "user activities" do
-  #   let(user) { create(:user) }
+  describe "email" do
+    user = FactoryGirl.create(:user)
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+  end
 
-  #   it "authenticates with a correct email and password" do
-  #     user.authenticate(user.email, "AGreatPassword!").should eq(user)
-  #   end
+  describe "email ensures presence of @ and . symbol after @" do
+    it { should allow_value("e@e.com").for(:email) }
+    it { should_not allow_value("emailatexampledotcom").for(:email) }
+  end
 
-  #   it "authenticates with a correct email and password regardless of email case" do
-  #     user.authenticate(user.email.uppercase, "AGreatPassword!").should eq(user)
-  #   end
+  describe "email stores as downcase with white space truncated" do
+    user = FactoryGirl.create(:user)
+    user.email = " Jo hn.Do e @exa mp le.c om "
+    user.email.should == "john.doe@example.com"
+  end
 
-  #   it "should not authenticate with an incorrect email or password" do
-  #     user.authenticate(user.email, "WrongPassword").should be_nil
-  #     user.authenticate("randomemail@account.com", user.password).should be_nil
-  #   end
+  describe "password" do
+    user = FactoryGirl.create(:user)
+    it { should validate_presence_of(:password) }
+    it { should ensure_length_of(:password).is_at_least(8) }
+  end
+
+  describe "password should be encrypted" do
+    user = FactoryGirl.create(:user)
+    subject { user.password }
+    it { should_not == "AGreatPassword!" }
+  end
+
+  # describe "authentication" do
+  #   user = FactoryGirl.create(:user)
+
+  #   # it "authenticates with a correct email and password" do
+  #   #   user.authenticate(user.email, "AGreatPassword!").should equal(user)
+  #   # end
+
+  #   # it "authenticates with a correct email and password regardless of email case" do
+  #   #   user.authenticate(user.email.uppercase, "AGreatPassword!").should equal(user)
+  #   # end
+
+  #   # it "should not authenticate with an incorrect email or password" do
+  #   #   user.authenticate(user.email, "WrongPassword").should be_nil
+  #   #   user.authenticate("randomemail@account.com", user.password).should be_nil
+  #   # end
   # end
 end
