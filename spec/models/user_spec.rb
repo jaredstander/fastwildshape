@@ -27,29 +27,36 @@ describe User do
   describe "password" do
     user = FactoryGirl.create(:user)
     it { should validate_presence_of(:password) }
-    it { should ensure_length_of(:password).is_at_least(8) }
+    it { should ensure_length_of(:password).is_at_least(9) }
   end
 
-  describe "password should be encrypted" do
+  describe "'s encrypted password" do
     user = FactoryGirl.create(:user)
-    subject { user.password }
-    it { should_not == "AGreatPassword!" }
+    subject { user.encrypted_password }
+    it { should_not === user.password }
+  end
+
+  describe "encrypted password should be salted" do
+    user1 = User.create(name: "User One", email: "email@testone.com", password: "password!")
+    user2 = User.create(name: "User Two", email: "otheremail@testtwo.com", password: "password!")
+    subject { user1.encrypted_password }
+    it { should_not == user2.encrypted_password }
   end
 
   # describe "authentication" do
   #   user = FactoryGirl.create(:user)
 
-  #   # it "authenticates with a correct email and password" do
-  #   #   user.authenticate(user.email, "AGreatPassword!").should equal(user)
-  #   # end
+  #   describe "succeeds with a valid email and password" do
+  #     user.authenticate(user.email, "AGreatPassword!").should equal(user)
+  #   end
 
-  #   # it "authenticates with a correct email and password regardless of email case" do
-  #   #   user.authenticate(user.email.uppercase, "AGreatPassword!").should equal(user)
-  #   # end
+  #   describe "succeeds with a correct email and password regardless of email case" do
+  #     user.authenticate(user.email.uppercase, "AGreatPassword!").should equal(user)
+  #   end
 
-  #   # it "should not authenticate with an incorrect email or password" do
-  #   #   user.authenticate(user.email, "WrongPassword").should be_nil
-  #   #   user.authenticate("randomemail@account.com", user.password).should be_nil
-  #   # end
+  #   describe "fails with an incorrect email or password" do
+  #     user.authenticate(user.email, "WrongPassword").should be_nil
+  #     user.authenticate("notauser@account.com", "somekindofthing").should be_nil
+  #   end
   # end
 end
