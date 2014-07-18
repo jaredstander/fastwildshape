@@ -22,6 +22,7 @@ include BCrypt
 
   def encrypt_password
     if password.present?
+      BCrypt::Engine.cost = 12
       self.encrypted_password = Password.create(password)
     end
   end
