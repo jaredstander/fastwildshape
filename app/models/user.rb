@@ -9,7 +9,7 @@ include BCrypt
 
   validates :name, :email, :password, presence: true
   validates_length_of :password, minimum: 9
-  validates :email, uniqueness: true
+  validates :email, :uniqueness => {:case_sensitive => false}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   before_save :encrypt_password
@@ -27,9 +27,9 @@ include BCrypt
     end
   end
 
-  def authenticate(email, password)
-    user = User.find_by_email(email)
-    if user && user.encrypted_password == password
+  def self.authenticate(email, password)
+    user = User.find_by_email(email.downcase)
+    if user && BCrypt::Password.new(user.encrypted_password) == password
       user
     end
   end
