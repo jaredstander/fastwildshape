@@ -18,12 +18,7 @@ describe Character do
 
   context "size" do
     it { should validate_presence_of(:size) }
-    # it "stored downcased with white space truncated" do
-    #   char.size = " MedIu m "
-    #   char.size.should == "medium"
-    # end
-    #
-    # This will be a 'select one' type of input. Simply make sure selection is on inclusion list. Rewrite to reflect this.
+    it {should ensure_inclusion_of(:size).in_array(%w[fine diminutive tiny small medium large huge gargantuan colossal]) }
   end
 
   context "strength" do
@@ -70,15 +65,15 @@ describe Character do
     it { should validate_presence_of(:milestone_levels) }
   end
 
-  describe "belongs to a user" do
+  pending "belongs to a user" do
     # it { should belong_to(:user) }
   end
 
-  describe "has no available forms before first milestone level" do
+  pending "has no available forms before first milestone level" do
     # it { should_not have_many(:available_forms) }
   end
 
-  describe "lists available forms after first milestone level" do
+  pending "lists available forms after first milestone level" do
     # it { should have_many(:available_forms) } 
   end
 
