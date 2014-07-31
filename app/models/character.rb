@@ -13,4 +13,10 @@ class Character < ActiveRecord::Base
       self[:name] = value.strip
     end
   end
+
+  before_save :set_milestone_levels
+
+  def set_milestone_levels
+    self[:milestone_levels] = "4,6,8,10,12"
+  end
 end
