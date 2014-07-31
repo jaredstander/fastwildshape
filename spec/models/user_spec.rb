@@ -31,9 +31,6 @@ describe User do
     user2.should have(1).error_on(:email)
     puts user2.errors
     expect(user2.errors[:email]).to include("has already been taken")
-    # expect(User.new(name: "Name", email: "ANEMAIL@EMAIL.COM", password: "apassword").errors).to include("Email has already been taken")
-    # user2.should have(1).error_on(:email)
-    # user2.errors[:email].should include("Email has already been taken")
   end
 
   context "password" do
