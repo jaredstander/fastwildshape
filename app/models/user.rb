@@ -5,7 +5,7 @@ include BCrypt
 
   attr_accessor :password
 
-  has_many :characters
+  has_many :characters, dependent: :destroy
 
   validates :name, :email, :password, presence: true
   validates_length_of :password, minimum: 9

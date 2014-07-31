@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :character do
-    name "Bob"
+    name { Faker::Name.name }
     level 4
     size "medium"
     str 10
@@ -12,7 +12,6 @@ FactoryGirl.define do
     touch_ac 10
     flatfooted_ac 13
     stackable_armor_ac 0
-    is_druid 1
     milestone_levels "4,6,8,10,12"
   end
 
