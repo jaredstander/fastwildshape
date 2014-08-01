@@ -5,8 +5,10 @@ class CreateWildShapeForms < ActiveRecord::Migration
       t.string :size
       t.string :type
       t.string :subtype
+      t.string :base_speed
       t.string :abilities
       t.string :attacks
+      t.integer :cmd_bonus_vs_trip
 
       t.timestamps
     end
