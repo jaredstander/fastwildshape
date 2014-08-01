@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20140731034406) do
   create_table "wild_shape_forms", force: true do |t|
     t.string   "name"
     t.string   "size"
-    t.string   "type"
-    t.string   "subtype"
+    t.string   "creature_type"
+    t.string   "creature_subtype"
     t.string   "base_speed"
     t.string   "abilities"
     t.string   "attacks"

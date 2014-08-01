@@ -4,8 +4,8 @@ FactoryGirl.define do
   factory :wild_shape_form do
     name "wolfcat"
     size "medium"
-    type "animal"
-    subtype "none"
+    creature_type "animal"
+    creature_subtype "none"
     base_speed 50
     abilities "scent, low-light vision, trip"
     attacks "bite +BAB (1d6+STR*1.5 plus trip)"
