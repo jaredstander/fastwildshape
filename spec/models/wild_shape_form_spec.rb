@@ -9,6 +9,14 @@ describe WildShapeForm do
       user2.should have(1).error_on(:name)
       expect(user2.errors[:name]).to include("has already been taken")
     end
+    it "saves all names as downcase" do
+      user3 = WildShapeForm.new(name: "OctoSpine", size: "medium", creature_type: "animal", creature_subtype: "none", base_speed: 50, abilities: "scent, low-light vision, trip", attacks: "bite +BAB (1d6+STR*1.5 plus trip)", cmd_bonus_vs_trip: 4)
+      expect { user3.name.to == "octospine" }
+    end
+    it "truncates whitespace" do
+      user4 = WildShapeForm.new(name: "  goldcrab         ", size: "medium", creature_type: "animal", creature_subtype: "none", base_speed: 50, abilities: "scent, low-light vision, trip", attacks: "bite +BAB (1d6+STR*1.5 plus trip)", cmd_bonus_vs_trip: 4)
+      expect { user4.name.to == "goldcrab" }
+    end
   end
   
   context "when selecting a size" do

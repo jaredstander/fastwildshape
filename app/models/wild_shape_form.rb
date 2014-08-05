@@ -5,4 +5,16 @@ class WildShapeForm < ActiveRecord::Base
   validates :cmd_bonus_vs_trip, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 12 }
   validates :size, inclusion: { in: %w(diminutive tiny small medium large huge), message: "%{value} is not a valid size" }
   validates :creature_type, inclusion: { in: %w(animal plant elemental), message: "%{value} is not a valid form type" }
+
+  def name= value
+    unless value == nil
+      self[:name] = value.downcase.strip!
+    end
+  end
+
+  def abilities= value
+    unless value == nil
+      self[:abilities] = value.split(", ").each { |x| x.capitalize! }.join(", ")
+    end
+  end
 end
